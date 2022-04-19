@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const connection = require('./database/database');
 const Pergunta = require('./database/Pergunta.js');
 const Resposta = require('./database/Resposta.js');
+const res = require('express/lib/response');
 // =========== DataBase Config ===========
 connection
 	.authenticate()
@@ -28,11 +29,12 @@ app.use(bodyParser.json());
 // =-=-=-=-=-=-=-=-=-=-= Rotas =-=-=-=-=-=-=-=-=-=-=
 // =========== Principal ===========
 app.get('/', (req, res) => {
+	//Pego todas as perguntas do Bd
 	Pergunta.findAll({
 		raw: true,
-		order: [
-			[ 'id', 'DESC' ] //Ordenando o id em ordem decrescente
-		]
+		//Ordenando o id em ordem decrescente
+		order: [ [ 'id', 'DESC' ] ]
+		//Caso dê certo, faça isso:
 	}).then((perguntas) => {
 		res.render('index', {
 			perguntas: perguntas
@@ -64,9 +66,15 @@ app.get('/pergunta/:id', (req, res) => {
 		where: { id: id }
 	}).then((pergunta) => {
 		if (pergunta != undefined) {
-			//Achou a pergunta
-			res.render('pergunta', {
-				pergunta: pergunta
+			//pegar todas as respostas referentes a minha pergunta
+			Resposta.findAll({
+				where: { perguntaId: pergunta.id }
+			}).then((respostas) => {
+				//Achou a pergunta
+				res.render('pergunta', {
+					pergunta: pergunta,
+					respostas: respostas
+				});
 			});
 		} else {
 			//Não achou a pergunta
@@ -74,7 +82,19 @@ app.get('/pergunta/:id', (req, res) => {
 		}
 	});
 });
+// =========== Responder pergunta ===========
 
+app.post('/responder', (req, res) => {
+	let corpo = req.body.corpo;
+	let perguntaId = req.body.pergunta;
+
+	Resposta.create({
+		corpo: corpo,
+		perguntaId: perguntaId
+	}).then(() => {
+		res.redirect('/pergunta/' + perguntaId);
+	});
+});
 app.listen(8080, () => {
 	console.log('🚀 Sevidor rodando! - http://localhost:8080/');
 });
