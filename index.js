@@ -79,7 +79,8 @@ app.get('/pergunta/:id', (req, res) => {
 				//Achou a pergunta
 				res.render('pergunta', {
 					pergunta: pergunta,
-					respostas: respostas
+					respostas: respostas,
+					erros: []
 				});
 			});
 		} else {
@@ -97,9 +98,16 @@ app.post('/responder', (req, res) => {
 	Resposta.create({
 		corpo: corpo,
 		perguntaId: perguntaId
-	}).then(() => {
-		res.redirect('/pergunta/' + perguntaId);
-	});
+	})
+		.then(() => {
+			res.redirect('/pergunta/' + perguntaId.trim());
+		})
+		.catch(({ errors }) => {
+			const renderErrorMessages = { erros: errors.map(({ message }) => message) };
+			console.log(renderErrorMessages);
+
+			res.render('perguntar', { renderErrorMessages });
+		});
 });
 app.listen(8080, () => {
 	console.log('🚀 Sevidor rodando! - http://localhost:8080/');
