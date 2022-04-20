@@ -27,9 +27,9 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 //Permite que leia dados de formulário via json
 app.use(bodyParser.json());
-//
+//Configuração da validação
 app.use(cookieParser('secret'));
-app.use(session({cookie: { maxAge: 60000 }}));
+app.use(session({ cookie: { maxAge: 60000 } }));
 app.use(flash());
 
 // =-=-=-=-=-=-=-=-=-=-= Rotas =-=-=-=-=-=-=-=-=-=-=
@@ -50,7 +50,9 @@ app.get('/', (req, res) => {
 
 // =========== Realizar pergunta ===========
 app.get('/perguntar', (req, res) => {
-	res.render('perguntar', { erros: [] });
+	let erros = req.flash('erros')[0];
+	console.log(erros);
+	res.render('perguntar', { erros: erros });
 });
 // =========== Recebimento da pegunta ===========
 app.post('/salvarpergunta', (req, res) => {
@@ -63,13 +65,21 @@ app.post('/salvarpergunta', (req, res) => {
 		descricao: descricao
 	})
 		.then(() => {
-			//Caso ocorra com sucesso eu redireciono o usuário
 			res.redirect('/');
 		})
 		.catch(({ errors }) => {
-			const renderErrorMessages = { erros: errors.map(({ message }) => message) };
-			res.render('perguntar', renderErrorMessages);
+			req.flash('erros', { erros: errors.map(({ message }) => message) });
+			res.redirect('perguntar');
 		});
+
+	// .then(() => {
+	// 	//Caso ocorra com sucesso eu redireciono o usuário
+	// 	res.redirect('/');
+	// })
+	// .catch(({ errors }) => {
+	// 	const renderErrorMessages = { erros: errors.map(({ message }) => message) };
+	// 	res.render('perguntar', renderErrorMessages);
+	// });
 });
 
 // =========== Visualizar pergunta ===========
@@ -83,12 +93,13 @@ app.get('/pergunta/:id', (req, res) => {
 			Resposta.findAll({
 				where: { perguntaId: pergunta.id }
 			}).then((respostas) => {
-				//Achou a pergunta
+				//Variavel de erro caso exista
 				let erros = req.flash('erros')[0];
+				//Achou a pergunta
 				res.render('pergunta', {
 					pergunta: pergunta,
 					respostas: respostas,
-					erros: erros 
+					erros: erros
 				});
 			});
 		} else {
@@ -106,11 +117,13 @@ app.post('/responder', (req, res) => {
 	Resposta.create({
 		corpo: corpo,
 		perguntaId: perguntaId
-	}).catch(({ errors }) => {
-		req.flash('erros', { erros: errors.map(({ message }) => message) });
-	}).finally(()=>{
-		res.redirect('/pergunta/' + perguntaId.trim());
-	});
+	})
+		.catch(({ errors }) => {
+			req.flash('erros', { erros: errors.map(({ message }) => message) });
+		})
+		.finally(() => {
+			res.redirect('/pergunta/' + perguntaId.trim());
+		});
 });
 app.listen(8080, () => {
 	console.log('🚀 Sevidor rodando! - http://localhost:8080/');
