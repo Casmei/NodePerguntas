@@ -4,11 +4,25 @@ const connection = require('./database');
 const Pergunta = connection.define('Pergunta', {
 	titulo: {
 		type: Sequelize.STRING,
-		allowNull: false
+		allowNull: false,
+		validate: {
+			notEmpty: {
+				msg: 'O campo Título não pode ser vazio!'
+			},
+			len: {
+				args: [ 4, 100 ],
+				msg: 'O campo Título precisa ter no minímo 4 caracteres'
+			}
+		}
 	},
 	descricao: {
 		type: Sequelize.TEXT,
-		allowNull: false
+		allowNull: false,
+		validate: {
+			notEmpty: {
+				msg: 'O campo Descrição não pode ser vazio!'
+			}
+		}
 	}
 });
 

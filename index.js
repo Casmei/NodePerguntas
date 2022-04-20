@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const connection = require('./database/database');
 const Pergunta = require('./database/Pergunta.js');
 const Resposta = require('./database/Resposta.js');
-const res = require('express/lib/response');
 // =========== DataBase Config ===========
 connection
 	.authenticate()
@@ -41,9 +40,10 @@ app.get('/', (req, res) => {
 		});
 	});
 });
+
 // =========== Realizar pergunta ===========
 app.get('/perguntar', (req, res) => {
-	res.render('perguntar');
+	res.render('perguntar', { erros: [] });
 });
 // =========== Recebimento da pegunta ===========
 app.post('/salvarpergunta', (req, res) => {
@@ -54,11 +54,17 @@ app.post('/salvarpergunta', (req, res) => {
 	Pergunta.create({
 		titulo: titulo,
 		descricao: descricao
-	}).then(() => {
-		//Caso ocorra com sucesso eu redireciono o usuário
-		res.redirect('/');
-	});
+	})
+		.then(() => {
+			//Caso ocorra com sucesso eu redireciono o usuário
+			res.redirect('/');
+		})
+		.catch(({ errors }) => {
+			const renderErrorMessages = { erros: errors.map(({ message }) => message) };
+			res.render('perguntar', renderErrorMessages);
+		});
 });
+
 // =========== Visualizar pergunta ===========
 app.get('/pergunta/:id', (req, res) => {
 	let id = req.params.id;
