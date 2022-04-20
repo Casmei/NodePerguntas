@@ -1,9 +1,12 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const connection = require('./database/database');
 const Pergunta = require('./database/Pergunta.js');
 const Resposta = require('./database/Resposta.js');
+const session = require('express-session');
+const flash = require('connect-flash');
 // =========== DataBase Config ===========
 connection
 	.authenticate()
@@ -24,6 +27,10 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 //Permite que leia dados de formulário via json
 app.use(bodyParser.json());
+//
+app.use(cookieParser('secret'));
+app.use(session({cookie: { maxAge: 60000 }}));
+app.use(flash());
 
 // =-=-=-=-=-=-=-=-=-=-= Rotas =-=-=-=-=-=-=-=-=-=-=
 // =========== Principal ===========
@@ -77,9 +84,11 @@ app.get('/pergunta/:id', (req, res) => {
 				where: { perguntaId: pergunta.id }
 			}).then((respostas) => {
 				//Achou a pergunta
+				let erros = req.flash('erros')[0];
 				res.render('pergunta', {
 					pergunta: pergunta,
-					respostas: respostas
+					respostas: respostas,
+					erros: erros 
 				});
 			});
 		} else {
@@ -97,8 +106,10 @@ app.post('/responder', (req, res) => {
 	Resposta.create({
 		corpo: corpo,
 		perguntaId: perguntaId
-	}).then(() => {
-		res.redirect('/pergunta/' + perguntaId);
+	}).catch(({ errors }) => {
+		req.flash('erros', { erros: errors.map(({ message }) => message) });
+	}).finally(()=>{
+		res.redirect('/pergunta/' + perguntaId.trim());
 	});
 });
 app.listen(8080, () => {
