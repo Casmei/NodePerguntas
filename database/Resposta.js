@@ -21,6 +21,6 @@ const Resposta = connection.define('Resposta', {
 	} //Toda resposta pertence a uma pergunta
 });
 
-Resposta.sync({ force: false });
+Resposta.sync({ force: false }).then(() => {});
 
 module.exports = Resposta;
