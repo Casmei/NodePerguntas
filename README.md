@@ -14,7 +14,7 @@ O projeto consiste em uma plataforma de perguntas e respostas (até o momento an
 
 ### ✅ Próximos recursos
 
-- [ ] Deploy da aplicação no Heroku
+- [x] Deploy da aplicação no Heroku
 - [ ] Cadastro/Login de usuário
 - [ ] Manter o usuário logado
 - [ ] Melhorar o sistema de validação
