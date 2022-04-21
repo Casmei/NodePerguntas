@@ -73,13 +73,11 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ---
 
-<h2 align="center">📝 Licença
-</h2>
 
 
+
+Feito com ❤️ e ☕ por Tiago de Castro 👋🏽 [Entre em contato!](https://www.linkedin.com/in/tiago-de-castro-lima-3814911b9/) <br>
 Este projeto esta sobe a licença [MIT](./LICENSE).
-
-Feito com ❤️ e ☕ por Tiago de Castro 👋🏽 [Entre em contato!](https://www.linkedin.com/in/tiago-de-castro-lima-3814911b9/)
 
 
 
