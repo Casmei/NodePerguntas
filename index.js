@@ -43,7 +43,8 @@ app.get('/', (req, res) => {
 		//Caso dê certo, faça isso:
 	}).then((perguntas) => {
 		res.render('index', {
-			perguntas: perguntas
+			perguntas: perguntas,
+			contador: 0
 		});
 	});
 });
@@ -51,8 +52,7 @@ app.get('/', (req, res) => {
 // =========== Realizar pergunta ===========
 app.get('/perguntar', (req, res) => {
 	let erros = req.flash('erros')[0];
-	console.log(erros);
-	res.render('perguntar', { erros: erros });
+	res.render('perguntar', { erros: erros, contador: 0 });
 });
 // =========== Recebimento da pegunta ===========
 app.post('/salvarpergunta', (req, res) => {
@@ -99,7 +99,8 @@ app.get('/pergunta/:id', (req, res) => {
 				res.render('pergunta', {
 					pergunta: pergunta,
 					respostas: respostas,
-					erros: erros
+					erros: erros,
+					contador: 0
 				});
 			});
 		} else {

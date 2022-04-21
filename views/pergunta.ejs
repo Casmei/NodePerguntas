@@ -16,13 +16,14 @@
 
                 <% if (erros) { %>
                     <div class="mostrar-erros mt-2  ">
-                        <% erros.erros.forEach(erro=> { %>
-                            <div class="animate__animated animate__fadeIn alert alert-danger mt-2 mb-0" role="alert">
+                        <% erros.erros.forEach(erro=> { contador += 50%>
+                            <div class="alert alert-danger mt-2 mb-0" data-aos="fade-left"
+                                data-aos-delay="<%= contador %>" role="alert">
                                 <%= erro %>
                             </div>
                             <% }) %>
                     </div>
-                <% } %>
+                    <% } %>
 
                         <form method="POST" action="/responder">
                             <h3>Responda</h3>

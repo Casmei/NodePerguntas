@@ -6,16 +6,20 @@
 
                 <% if (erros) { %>
                     <div class="mostrar-erros mt-2  ">
-                        <% erros.erros.forEach(erro=> { %>
-                            <div class="animate__animated animate__fadeIn alert alert-danger mt-2 mb-0" role="alert">
-                                <%= erro %>
+                        <% erros.erros.forEach(erro=> { contador += 50%>
+                            <div class="alert alert-danger mt-2 mb-0" role="alert" <% if (contador%2==0) { %>
+                                data-aos="fade-left"
+                                <% } %>
+                                    data-aos="fade-up"
+                                    data-aos-delay="<%= contador %>">
+                                        <%= erro %>
                             </div>
                             <% }) %>
                     </div>
                     <% } %>
 
 
-                        <div class="card mt-3    " id="formulario-pergunta">
+                        <div class="card mt-3" id="formulario-pergunta" data-aos="fade-up" data-aos-delay="12">
                             <!-- Card Header -->
                             <div class="card-header">
                                 <h3>Realizar pergunta</h3>
