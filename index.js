@@ -7,6 +7,7 @@ const Pergunta = require('./database/Pergunta.js');
 const Resposta = require('./database/Resposta.js');
 const session = require('express-session');
 const flash = require('connect-flash');
+require('dotenv/config');
 // =========== DataBase Config ===========
 connection
 	.authenticate()
@@ -31,6 +32,8 @@ app.use(bodyParser.json());
 app.use(cookieParser('secret'));
 app.use(session({ cookie: { maxAge: 60000 } }));
 app.use(flash());
+
+console.log(process.env.TESTE);
 
 // =-=-=-=-=-=-=-=-=-=-= Rotas =-=-=-=-=-=-=-=-=-=-=
 // =========== Principal ===========
