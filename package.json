@@ -4,6 +4,7 @@
   "description": "Uma plataforma de perguntas e respostas estilo Yahoo respostas",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tiago de Castro",
