@@ -39,7 +39,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
 - Instale as dependências <br>```npm install```
 
-- Configure suas váriaveis de ambiente, para que o banco de dados funcione corretamente. Para isso acesse [.env.example](./env.example) renomeie o arquivo para ```.env```, após isso, coloque as informações de conexão:
+- Configure suas váriaveis de ambiente, para que o banco de dados funcione corretamente. Para isso acesse [./env.example](/env.example) renomeie o arquivo para ```.env```, após isso, coloque as informações de conexão:
 ```html
 DB_HOST= localhost
 DB_PORT= a porta (3306 é o padrão do Mysql)
@@ -51,7 +51,7 @@ DB_NAME= nome do squema
 - Execute a aplicação <br>
 ```nodemon index.js```
 
-O servidor inciará na porta:8080 - acesse <http://localhost:8080> ---
+O servidor inciará na porta:8080 - acesse <http://localhost:8080>
 
 ### ⚒️ Tecnologias
 
