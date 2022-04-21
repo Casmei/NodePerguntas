@@ -1,6 +1,31 @@
-# Instalação
+<h1 align="center">Code Alms | Perguntas e Respostas
+</h1>
+<!-- ME CONTRATA! AAAAAAAAAAAA kkkkk -->
 
-### Pré-requisitos
+Esse projeto foi desenvolvido inicialmente com base no curso [Formação Node.js](https://www.udemy.com/course/formacao-nodejs/) do professor Victor Lima. Ao final do projeto, para melhorar minhas habilidades com a tecnologia, decidi realizar algumas mudanças, seja na interface, estrutura ou lógica da aplicação.
+### 🔖 Sobre
+O projeto consiste em uma plataforma de perguntas e respostas (até o momento anônimas), em que qualquer usuário que esteja precisando tirar ou esclarecer alguma dúvida pode realizar sua pergunta. As perguntas realizadas são listadas na página inicial da plataforma, o usuário, ao clicar em qualquer pergunta será direcionado a página especifica da pergunta. Essa página conta com a pergunta em especifica a ser respondida, o campo de resposta e, logo em baixo, uma listagem de todas últimas respostas. 
+
+---
+
+<h2 align="center"> 
+	🚧  Projeto em desenvolvimento...  🚧
+</h2>
+
+### ✅ Próximos recursos
+
+- [ ] Deploy da aplicação no Heroku
+- [ ] Cadastro/Login de usuário
+- [ ] Manter o usuário logado
+- [ ] Melhorar o sistema de validação
+- [ ] Linkar as perguntas e respostas ao usuário
+
+---
+
+<h1 align="center">Instalação
+</h1>
+
+### 🏁 Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [Mysql](https://www.mysql.com/) e o [Mysql Workbech](https://www.mysql.com/products/workbench/).
@@ -22,7 +47,9 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
 O servidor inciará na porta:8080 - acesse <http://localhost:8080> 
 
-### 🛠 Tecnologias
+---
+
+### ⚒️ Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
@@ -31,7 +58,10 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Sequelize](https://www.typescriptlang.org/)
 - [Ejs](https://ejs.co/)
 
-## Colaboradores ✨
+---
+
+<h2 align="center">Colaboradores
+</h2>
 
 <table>
   <tr>
@@ -39,6 +69,17 @@ As seguintes ferramentas foram usadas na construção do projeto:
     <td align="center"><a href="https://github.com/ArthurRAmaral"><img src="https://avatars.githubusercontent.com/u/48517851" width="100px;"  alt=""/><br /><sub><b>Arthur Rocha</b></sub></a><br /></td>
     
   </tr>
+ </table>
+
+---
+
+<h2 align="center">📝 Licença
+</h2>
+
+
+Este projeto esta sobe a licença [MIT](./LICENSE).
+
+Feito com ❤️ e ☕ por Tiago de Castro 👋🏽 [Entre em contato!](https://www.linkedin.com/in/tiago-de-castro-lima-3814911b9/)
 
 
 
