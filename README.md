@@ -1,4 +1,4 @@
-<h1 align="center">Code Alms | Perguntas e Respostass
+<h1 align="center">Code Alms | Perguntas e Respostas
 </h1>
 <!-- ME CONTRATA! AAAAAAAAAAAA kkkkk -->
 
