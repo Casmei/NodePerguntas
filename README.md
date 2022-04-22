@@ -14,7 +14,7 @@ O projeto consiste em uma plataforma de perguntas e respostas (até o momento an
 
 ### ✅ Próximos recursos
 
-- [ ] Deploy da aplicação no Heroku
+- [x] Deploy da aplicação no Heroku
 - [ ] Cadastro/Login de usuário
 - [ ] Manter o usuário logado
 - [ ] Melhorar o sistema de validação
@@ -37,17 +37,21 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 - Acesse a pasta do projeto no terminal/cmd <br>
 ```cd Node-Perguntas```
 
-- **Verifique** se a conexão ```3307``` está disponível pasa uso em seu Mysql. <br>
+- Instale as dependências <br>```npm install```
 
-- Instale as dependências <br>
-```npm install```
+- Configure suas váriaveis de ambiente, para que o banco de dados funcione corretamente. Para isso acesse [./env.example](/.env.example) e renomeie o arquivo para ```.env```, após isso, coloque as informações de conexão do banco de dados:
+```
+DB_HOST= localhost
+DB_PORT= a porta (3306 é o padrão do Mysql)
+DB_USER= seu usuário (root é o padrão)
+DB_PASSWORD= sua senha
+DB_NAME= nome do squema
+```
 
 - Execute a aplicação <br>
 ```nodemon index.js```
 
-O servidor inciará na porta:8080 - acesse <http://localhost:8080> 
-
----
+O servidor inciará na porta:8080 - acesse <http://localhost:8080>
 
 ### ⚒️ Tecnologias
 
@@ -72,7 +76,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
  </table>
 
 ---
-
 
 
 
