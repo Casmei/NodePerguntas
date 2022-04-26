@@ -1,6 +1,6 @@
 <%- include ('partials/header.ejs') %>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <%- include ('partials/navbar.ejs') %>
 
       <div class="container">
@@ -98,7 +98,10 @@
           </div>
           <% }) %>
       </div>
-      <%- include ('partials/rodape.ejs') %>
+
+      <div style="margin-top: 150px;">
+        <%- include ('partials/rodape.ejs') %>
+      </div>
 
   </body>
 
