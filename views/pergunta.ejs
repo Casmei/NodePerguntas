@@ -4,21 +4,20 @@
     <%- include ('partials/navbar.ejs') %>
 
       <div class="container">
-        <hr>
+        <hr data-aos="fade" data-aos-delay="200">
         <h1 data-aos="fade" data-aos-delay="20">
           <%= pergunta.titulo %>
         </h1>
         <p data-aos="fade" data-aos-delay="100">
           <%= pergunta.descricao %>
         </p>
-        <hr>
+        <hr data-aos="fade" data-aos-delay="200">
 
 
         <% if (erros) { %>
           <div class="mostrar-erros mt-2  ">
             <% erros.erros.forEach(erro=> { contador += 50%>
-              <div class="alert alert-danger mt-2 mb-0" data-aos="fade-left" data-aos-delay="<%= contador %>"
-                role="alert">
+              <div class="alert alert-danger mt-2 mb-0" data-aos="fade-left" c role="alert">
                 <%= erro %>
               </div>
               <% }) %>
@@ -34,9 +33,9 @@
               <input type="hidden" name="pergunta" value=" <%= pergunta.id %> ">
               <button data-aos="fade" data-aos-delay="150" type="submit" class="btn btn-dark">Responder</button>
             </form>
-            <hr>
+            <hr data-aos="fade" data-aos-delay="200">
             <h3 data-aos="fade" data-aos-delay="200">Respostas</h3>
-            <hr>
+            <hr data-aos="fade" data-aos-delay="200">
             <% respostas.forEach(resposta=> { contador += 50 %>
               <br>
               <div data-aos="fade-left" data-aos-delay="<%= contador %>" class="card">
@@ -53,6 +52,8 @@
       <div>
 
       </div>
+      <%- include ('partials/rodape.ejs') %>
+
   </body>
 
   <%- include ('partials/footer.ejs') %>
