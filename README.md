@@ -14,7 +14,8 @@ O projeto consiste em uma plataforma de perguntas e respostas (até o momento an
 
 ### ✅ Próximos recursos
 
-- [x] Deploy da aplicação no Heroku
+- [x] Deploy da aplicação no 
+- [x] Opção para excluir pergunta
 - [ ] Sistema de categorias
 - [ ] Melhorar o sistema de validação
 

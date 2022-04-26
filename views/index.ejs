@@ -33,21 +33,53 @@
                   <p type="button" class="text-dark border-0 dropdown-toggle" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                   </p>
+
                   <div class="dropdown-menu dropdown-menu-right">
 
-                    <form action="/excluir" method="POST" class="dropdown-item">
-                      <input type="hidden" name="id" value="<%= pergunta.id %>">
-                      <button class="btn p-0 m-0">
-                        <i class="fa-solid fa-trash"></i>
+                    <div class="dropdown-item bg-white " data-toggle="modal" data-target="#exampleModalCenter"
+                      style="cursor: pointer;">
+                      <button type="button" class="btn m-0 p-0">
+                        <i class=" fa-solid fa-trash"></i>
                         Excluir
                       </button>
-                    </form>
+                    </div>
+
+                    <!-- <form action="/excluir" method="POST" class="dropdown-item" data-toggle="modal"
+                      data-target="#exampleModalCenter">
+                      <input type="hidden" name="id" value="<%= pergunta.id %>">
+                    </form> -->
 
                   </div>
                 </div>
 
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title font-wegth" id="exampleModalLongTitle">⚠️ Atenção!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Você realmente deseja excluir esta pergunta?
+                      </div>
+                      <div class="modal-footer d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary m-0" data-dismiss="modal">Sair</button>
+                        <form action="/excluir" method="POST">
+                          <input type="hidden" name="id" value="<%= pergunta.id %>">
+                          <button class="btn btn-danger m-0">Excluir</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
               </div>
+
+
+
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
                   <h3>
