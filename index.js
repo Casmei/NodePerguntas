@@ -142,6 +142,45 @@ app.post('/responder', (req, res) => {
 			res.redirect('/pergunta/' + perguntaId.trim());
 		});
 });
+
+// =========== Editar pergunta ===========
+app.get('/edit/:id', (req, res) => {
+	let id = req.params.id;
+
+	if (isNaN(id)) {
+		res.redirect('/');
+	}
+
+	Pergunta.findByPk(id)
+		.then((pergunta) => {
+			if (pergunta != undefined) {
+				res.render('edit', { pergunta: pergunta });
+			} else {
+				res.redirect('/');
+			}
+		})
+		.catch((erro) => {
+			res.redirect('/');
+		});
+});
+
+app.post('/salvaratualizacao', (req, res) => {
+	let id = req.body.id;
+	let titulo = req.body.titulo;
+	let descricao = req.body.descricao;
+
+	Pergunta.update(
+		{ titulo: titulo, descricao: descricao },
+		{
+			where: {
+				id: id
+			}
+		}
+	).then(() => {
+		res.redirect('/');
+	});
+});
+
 app.listen(process.env.PORT || 8080, () => {
 	console.log('🚀 Sevidor rodando! - http://localhost:8080/');
 });

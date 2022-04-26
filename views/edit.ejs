@@ -1,0 +1,40 @@
+<%- include ('partials/header.ejs') %>
+
+  <body class="d-flex flex-column min-vh-100">
+    <%- include ('partials/navbar.ejs') %>
+      <div class="container">
+
+        <div class="card mt-3" id="formulario-pergunta" data-aos="fade-up" data-aos-delay="12">
+          <!-- Card Header -->
+          <div class="card-header">
+            <h3>Atualizar pergunta</h3>
+          </div>
+          <!-- Card Body-->
+          <div class="card-body">
+            <!-- Formulário de pergunta-->
+            <form method="POST" action="/salvaratualizacao">
+
+              <input type="hidden" name="id" value=" <%= pergunta.id %> ">
+              <label>Título</label>
+              <input type="text" name="titulo" value="<%= pergunta.titulo %> " class="form-control">
+              <br>
+              <label>Descrição</label>
+              <!-- <input type="text" class="form-control" style="max-width: 100%; height:45px;" name="descricao"
+                value="<%- pergunta.descricao %>" /> -->
+              <textarea name="descricao" class="form-control"><%= pergunta.descricao %></textarea>
+              <!-- <textarea rows="10" cols="60" name="descricao" value=""
+                class=""></textarea> -->
+              <br>
+              <button class="btn btn-success">Atualizar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+      <%- include ('partials/rodape.ejs') %>
+
+
+  </body>
+  <%- include ('partials/footer.ejs') %>
