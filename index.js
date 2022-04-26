@@ -33,8 +33,6 @@ app.use(cookieParser('secret'));
 app.use(session({ cookie: { maxAge: 60000 } }));
 app.use(flash());
 
-console.log(process.env.TESTE);
-
 // =-=-=-=-=-=-=-=-=-=-= Rotas =-=-=-=-=-=-=-=-=-=-=
 // =========== Principal ===========
 app.get('/', (req, res) => {
@@ -57,7 +55,7 @@ app.get('/perguntar', (req, res) => {
 	let erros = req.flash('erros')[0];
 	res.render('perguntar', { erros: erros, contador: 0 });
 });
-// =========== Recebimento da pegunta ===========
+// =========== Salvar pegunta ===========
 app.post('/salvarpergunta', (req, res) => {
 	//Primeiro recebo os dados do form
 	let titulo = req.body.titulo;
@@ -74,15 +72,30 @@ app.post('/salvarpergunta', (req, res) => {
 			req.flash('erros', { erros: errors.map(({ message }) => message) });
 			res.redirect('perguntar');
 		});
-
-	// .then(() => {
-	// 	//Caso ocorra com sucesso eu redireciono o usuário
-	// 	res.redirect('/');
-	// })
-	// .catch(({ errors }) => {
-	// 	const renderErrorMessages = { erros: errors.map(({ message }) => message) };
-	// 	res.render('perguntar', renderErrorMessages);
-	// });
+});
+// =========== Excluir pegunta ===========
+app.post('/excluir', (req, res) => {
+	console.log('Página encontrada');
+	//Pego o id da pergunta que quero apagar
+	let id = req.body.id;
+	let sucesso = 'Pergunta apagada com sucesso!';
+	console.log(id);
+	//Verifico o ID
+	if (id != undefined) {
+		if (!isNaN(id)) {
+			Pergunta.destroy({
+				where: {
+					id: id
+				}
+			}).then(() => {
+				res.redirect('/');
+			});
+		} else {
+			res.redirect('/');
+		}
+	} else {
+		res.redirect('/');
+	}
 });
 
 // =========== Visualizar pergunta ===========
