@@ -8,11 +8,7 @@ router.use(apiRouter)
 
 // =========== Principal ===========
 router.get('/', async (req, res) => {
-
-    const r = await axios.get('/api/all-perguntas')
-    const { perguntas } = r.data
-
-    res.render('index', { perguntas, contador: 0 })
+    res.render('index', { perguntas: [], contador: 0 })
 })
 
 router.get('/login', (req, res) => {
