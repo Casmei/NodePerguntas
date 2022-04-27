@@ -6,18 +6,25 @@ import { prisma } from './database'
 const router = Router()
 router.use(apiRouter)
 
+// =========== Tela de Registro ===========
+router.get('/register', (req, res) => {
+    res.render('register')
+})
+
+// =========== Tela de Login ===========
+router.get('/login', (req, res) => {
+    res.render('login', { errors: [], contador: 0 })
+})
+
+
 // =========== Principal ===========
 router.get('/', async (req, res) => {
     res.render('index', { perguntas: [], contador: 0 })
 })
 
-router.get('/login', (req, res) => {
-    res.render('login', { errors: [], contador: 0 })
-})
 
-router.get('/register', (req, res) => {
-    res.render('register')
-})
+
+
 
 // =========== Realizar pergunta ===========
 router.get('/perguntar', (req, res) => {
