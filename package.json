@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "start": "node index.js",
     "migrate": "prisma migrate dev",
     "studio": "prisma studio",
     "test": "jest -i --verbose"
