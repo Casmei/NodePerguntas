@@ -1,5 +1,6 @@
 import express, { urlencoded, json } from 'express'
 import cookieParser from 'cookie-parser'
+import session from 'express-session'
 
 import flash from 'connect-flash'
 import router from './src/routes'
@@ -24,6 +25,7 @@ app.use(json({ limit: '10mb' }))
 
 // Configuração da validação
 app.use(cookieParser('secret'))
+app.use(session({ cookie: { maxAge: 60000 } }))
 app.use(flash())
 
 app.use(router)
