@@ -14,10 +14,11 @@ O projeto consiste em uma plataforma de perguntas e respostas (até o momento an
 
 ### ✅ Próximos recursos
 
-- [x] Deploy da aplicação no 
-- [x] Opção para excluir pergunta
-- [ ] Sistema de categorias
+- [x] Deploy da aplicação no Heroku
+- [ ] Cadastro/Login de usuário
+- [ ] Manter o usuário logado
 - [ ] Melhorar o sistema de validação
+- [ ] Linkar as perguntas e respostas ao usuário
 
 ---
 
