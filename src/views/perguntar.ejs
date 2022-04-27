@@ -4,9 +4,9 @@
     <%- include ('partials/navbar.ejs') %>
       <div class="container">
 
-        <% if (erros) { %>
+        <% if (errors) { %>
           <div class="mostrar-erros mt-2  ">
-            <% erros.erros.forEach(erro=> { contador += 50%>
+            <% errors.erros.forEach(erro=> { contador += 50%>
               <div class="alert alert-danger mt-2 mb-0" role="alert" <% if (contador%2==0) { %>
                 data-aos="fade-left"
                 <% } %>

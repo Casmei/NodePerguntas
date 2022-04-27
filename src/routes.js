@@ -22,7 +22,7 @@ router.get('/register', (req, res) => {
 // =========== Realizar pergunta ===========
 router.get('/perguntar', (req, res) => {
     let errors = req.flash('errors')[0]
-    res.render('perguntar', { errors: errors, contador: 0 })
+    res.render('perguntar', { errors, contador: 0 })
 })
 
 // =========== Recebimento da pegunta ===========
