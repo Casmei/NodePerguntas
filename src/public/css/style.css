@@ -1,10 +1,34 @@
 body {
-	background-color: #eceff1;
+    background-color: #eceff1;
 }
 
 #formulario-pergunta {
-	margin-top: 5vh;
+    margin-top: 5vh;
 }
 nav > a > h1 {
-	font-size: 2rem;
+    font-size: 2rem;
+}
+
+.avatar input {
+    opacity: 0;
+    position: absolute;
+}
+.avatar label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.avatar label img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+    transition: 0.3s;
+}
+
+.avatar label img:hover {
+    transform: translate(0, -5px);
 }
