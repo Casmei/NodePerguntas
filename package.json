@@ -29,7 +29,8 @@
     "vite-plugin-node": "^0.0.19"
   },
   "devDependencies": {
-    "@swc/jest": "^0.2.20",
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
     "@types/cookie-parser": "^1.4.2",
     "@types/express": "^4.17.13",
     "@types/jest": "^27.4.1",
