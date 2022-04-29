@@ -1,7 +1,5 @@
-import axios from 'axios'
 import { Router } from 'express'
 import { apiRouter } from './api'
-import { prisma } from './database'
 
 const router = Router()
 router.use(apiRouter)
