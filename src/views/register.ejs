@@ -76,10 +76,17 @@
 <%- include ('partials/footer.ejs') %>
 
 <script>
-    document.querySelector('.form-register').onsubmit = e => {
+    document.querySelector('.avatar-input').onchange = e => {
+        const reader = new FileReader()
+        reader.onload = () => {
+            document.querySelector('.avatar-image').src = reader.result
+        }
+        reader.readAsDataURL(e.target.files[0])
+    }
+
+    document.querySelector('.form-register').onsubmit = async e => {
         e.preventDefault()
 
-        let avatarB64
         const avatar = document.querySelector('.avatar-input').files[0]
         const name = document.querySelector('.name-input').value
         const email = document.querySelector('.email-input').value
@@ -89,10 +96,13 @@
         reader.readAsBinaryString(avatar)
 
         reader.onload = async () => {
-            avatarB64 = btoa(reader.result)
-
             try {
-                const r = await axios.post('/api/register', { name, email, password, avatar: avatarB64 })
+                const r = await axios.post('/api/register', {
+                    name,
+                    email,
+                    password,
+                    avatar: btoa(reader.result),
+                })
                 alert('Cadastro realizado com sucesso!')
                 window.location.href = '/'
             } catch (e) {
