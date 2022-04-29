@@ -1,6 +1,6 @@
 import request from 'supertest'
-import { app } from '..'
-import { createTestPergunta, createTestUser, deleteAllPerguntas } from './config'
+import { app } from '../../'
+import { createTestPergunta, createTestUser, deleteAllPerguntas } from '../config'
 
 const req = request(app)
 

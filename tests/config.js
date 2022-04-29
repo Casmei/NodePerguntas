@@ -1,6 +1,6 @@
 import { prisma } from '../src/database'
 import request from 'supertest'
-import { app } from '..'
+import { app } from '../'
 import { readFileSync } from 'fs'
 
 const pngB64 = Buffer.from(readFileSync('tests/images/png.png')).toString('base64')

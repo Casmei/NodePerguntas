@@ -7,7 +7,8 @@
     "dev": "vite",
     "migrate": "prisma migrate dev",
     "studio": "prisma studio",
-    "test": "jest -i --verbose"
+    "test": "jest -i --verbose",
+    "cypress": "cypress open"
   },
   "author": "Tiago de Castro",
   "license": "ISC",
@@ -37,6 +38,7 @@
     "@types/jsonwebtoken": "^8.5.8",
     "@types/lodash.isequal": "^4.5.6",
     "axios": "^0.26.1",
+    "cypress": "^9.6.0",
     "jest": "26.6.3",
     "supertest": "^6.2.2",
     "vite": "^2.9.5"

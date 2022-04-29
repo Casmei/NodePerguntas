@@ -1,7 +1,7 @@
 import request from 'supertest'
-import { app } from '..'
-import { nonStringList } from '../src/utils'
-import { createTestPergunta, createTestUser } from './config'
+import { app } from '../..'
+import { nonStringList } from '../../src/utils'
+import { createTestPergunta, createTestUser } from '../config'
 
 const req = request(app)
 

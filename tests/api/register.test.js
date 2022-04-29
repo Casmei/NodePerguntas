@@ -1,7 +1,7 @@
 import request from 'supertest'
-import { app } from '..'
-import { nonStringList } from '../src/utils'
-import { deleteAllUsers, gifB64, jpegB64, jpgB64, pngB64, webpB64 } from './config'
+import { app } from '../..'
+import { nonStringList } from '../../src/utils'
+import { deleteAllUsers, gifB64, jpegB64, jpgB64, pngB64, webpB64 } from '../config'
 
 const req = request(app)
 
